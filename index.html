@@ -72,6 +72,10 @@
             height: 50px; /* ロゴの高さを設定 */
             width: auto;
         }
+        header nav {
+            display: flex;
+            align-items: center;
+        }
         header nav ul {
             padding: 0;
             list-style: none;
@@ -80,6 +84,24 @@
         header nav li {
             display: inline;
             padding: 0 20px;
+        }
+
+        /* 言語切り替えボタン */
+        .lang-toggle {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            margin-left: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .lang-toggle:hover {
+            background-color: #fff;
+            color: var(--dark-bg);
         }
 
         /* ハンバーガーメニュー */
@@ -368,6 +390,9 @@
             #showcase p {
                 font-size: 18px;
             }
+            .lang-toggle {
+                margin: 20px 0 0 0;
+            }
         }
     </style>
 </head>
@@ -382,10 +407,11 @@
            
             <nav>
                 <ul>
-                    <li><a href="#concept">コンセプト</a></li>
-                    <li><a href="#menu">メニュー</a></li>
-                    <li><a href="#stores">店舗情報</a></li>
+                    <li><a href="#concept" data-lang-key="navConcept">コンセプト</a></li>
+                    <li><a href="#menu" data-lang-key="navMenu">メニュー</a></li>
+                    <li><a href="#stores" data-lang-key="navStores">店舗情報</a></li>
                 </ul>
+                <button class="lang-toggle" id="lang-toggle-btn">English</button>
             </nav>
             <button class="hamburger-menu">
                 <span class="line"></span>
@@ -397,16 +423,16 @@
 
     <section id="showcase">
         <div class="container">
-            <h1>肉を喰らえ！</h1>
-            <p>がっつり系ステーキ専門店の挑戦</p>
-            <a href="#menu" class="cta-button">メニューを見る</a>
+            <h1 data-lang-key="heroTitle">肉を喰らえ！</h1>
+            <p data-lang-key="heroSubtitle">がっつり系ステーキ専門店の挑戦</p>
+            <a href="#menu" class="cta-button" data-lang-key="heroCta">メニューを見る</a>
         </div>
     </section>
 
     <section id="concept">
         <div class="container">
-            <h2 class="fade-in">OUR CONCEPT</h2>
-            <p class="fade-in">「とにかく【肉】を思う存分喰らいついてほしい！」<br>そんなシンプルな願いから、Steak Maxは始まりました。<br>
+            <h2 class="fade-in" data-lang-key="conceptTitle">OUR CONCEPT</h2>
+            <p class="fade-in" data-lang-key="conceptText">「とにかく【肉】を思う存分喰らいついてほしい！」<br>そんなシンプルな願いから、Steak Maxは始まりました。<br>
             <strong>固形燃料を使い、お客様の目の前でジュージューと音を立てる熱々の鉄板でご提供するのが最大のこだわり。</strong><br>
             厳選された塊肉を、最高の焼き加減で。あなたの「肉欲」を全力で満します。</p>
         </div>
@@ -414,48 +440,48 @@
 
     <section id="menu">
         <div class="container">
-            <h2 class="fade-in">OUR MENU</h2>
+            <h2 class="fade-in" data-lang-key="menuTitle">OUR MENU</h2>
             <div class="menu-grid">
                 <div class="menu-item fade-in">
                     <img src="steak.png" alt="がっつりステーキ">
                     <div class="menu-item-content">
-                        <h3>がっつりステーキ</h3>
-                        <p>当店の看板メニュー。圧倒的なボリュームと旨さ。</p>
+                        <h3 data-lang-key="menuSteakTitle">がっつりステーキ</h3>
+                        <p data-lang-key="menuSteakDesc">当店の看板メニュー。圧倒的なボリュームと旨さ。</p>
                     </div>
                 </div>
                 <div class="menu-item fade-in">
                     <img src="sirloin.png" alt="厚切りサーロイン">
                     <div class="menu-item-content">
-                        <h3>厚切りサーロインステーキ</h3>
-                        <p>ジューシーな肉汁が溢れ出す、贅沢な一品。</p>
+                        <h3 data-lang-key="menuSirloinTitle">厚切りサーロインステーキ</h3>
+                        <p data-lang-key="menuSirloinDesc">ジューシーな肉汁が溢れ出す、贅沢な一品。</p>
                     </div>
                 </div>
                 <div class="menu-item fade-in">
                     <img src="hamburg.png" alt="俵型ハンバーグ">
                     <div class="menu-item-content">
-                        <h3>俵型ハンバーグ</h3>
-                        <p>肉の旨味が凝縮された、ふっくらジューシーなハンバーグ。</p>
+                        <h3 data-lang-key="menuHamburgTitle">俵型ハンバーグ</h3>
+                        <p data-lang-key="menuHamburgDesc">肉の旨味が凝縮された、ふっくらジューシーなハンバーグ。</p>
                     </div>
                 </div>
                 <div class="menu-item fade-in">
                     <img src="curry.png" alt="焙煎黒カレー">
                     <div class="menu-item-content">
-                        <h3>焙煎黒カレー</h3>
-                        <p>スパイスの香りと深いコクがたまらない、こだわりの一皿。</p>
+                        <h3 data-lang-key="menuCurryTitle">焙煎黒カレー</h3>
+                        <p data-lang-key="menuCurryDesc">スパイスの香りと深いコクがたまらない、こだわりの一皿。</p>
                     </div>
                 </div>
                 <div class="menu-item fade-in">
                     <img src="combo.png" alt="コンボ">
                     <div class="menu-item-content">
-                        <h3>コンボ</h3>
-                        <p>ステーキとハンバーグ、両方味わえる欲張りな一皿。</p>
+                        <h3 data-lang-key="menuComboTitle">コンボ</h3>
+                        <p data-lang-key="menuComboDesc">ステーキとハンバーグ、両方味わえる欲張りな一皿。</p>
                     </div>
                 </div>
                 <div class="menu-item fade-in">
                     <img src="cheese.png" alt="ハワイアンチーズソース">
                     <div class="menu-item-content">
-                        <h3>ハワイアンチーズソース</h3>
-                        <p>とろーり濃厚チーズソース。ステーキやハンバーグとの相性抜群！</p>
+                        <h3 data-lang-key="menuCheeseTitle">ハワイアンチーズソース</h3>
+                        <p data-lang-key="menuCheeseDesc">とろーり濃厚チーズソース。ステーキやハンバーグとの相性抜群！</p>
                     </div>
                 </div>
             </div>
@@ -464,21 +490,21 @@
 
     <section id="stores">
         <div class="container">
-            <h2 class="fade-in">STORE INFO</h2>
+            <h2 class="fade-in" data-lang-key="storesTitle">STORE INFO</h2>
             <div class="store-grid">
                 <div class="store-item fade-in">
                     <div class="store-info">
-                        <h3>江古田店</h3>
+                        <h3 data-lang-key="storeEkoda">江古田店</h3>
                         <p>
-                            <strong>住所:</strong> 東京都練馬区旭丘1-67-5<br>
-                            <strong>電話:</strong> 03-5926-6929<br>
-                            <strong>営業時間:</strong> 11:30～22:30 (L.O 22:00)<br>
-                            <strong>定休日:</strong> なし
+                            <strong data-lang-key="addressLabel">住所:</strong> 東京都練馬区旭丘1-67-5<br>
+                            <strong data-lang-key="phoneLabel">電話:</strong> 03-5926-6929<br>
+                            <strong data-lang-key="hoursLabel">営業時間:</strong> 11:30～22:30 (L.O 22:00)<br>
+                            <strong data-lang-key="closedLabel">定休日:</strong> なし
                         </p>
                         <div class="line-order">
                             <a href="https://page.line.me/970ppkah?openQrModal=true" target="_blank" class="line-button">
                                 <img src="https://www.vectorlogo.zone/logos/line/line-icon.svg" alt="LINE Logo">
-                                <span>デリバリー・テイクアウトのご注文はこちら</span>
+                                <span data-lang-key="lineOrder">デリバリー・テイクアウトのご注文はこちら</span>
                             </a>
                         </div>
                     </div>
@@ -488,26 +514,26 @@
                 </div>
                 <div class="store-item fade-in">
                     <div class="store-info">
-                        <h3>新宿中央通り店</h3>
+                        <h3 data-lang-key="storeShinjuku">新宿中央通り店</h3>
                         <p>
-                            <strong>住所:</strong> 東京都新宿区新宿3-31-7 ミヤビル B1F<br>
-                            <strong>電話:</strong> 03-6380-0329<br>
-                            <strong>営業時間:</strong> 11:30～22:30 (L.O 22:00)<br>
-                            <strong>定休日:</strong> なし
+                            <strong data-lang-key="addressLabel">住所:</strong> 東京都新宿区新宿3-31-7 ミヤビル B1F<br>
+                            <strong data-lang-key="phoneLabel">電話:</strong> 03-6380-0329<br>
+                            <strong data-lang-key="hoursLabel">営業時間:</strong> 11:30～22:30 (L.O 22:00)<br>
+                            <strong data-lang-key="closedLabel">定休日:</strong> なし
                         </p>
                     </div>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.44197135436!2d139.70085261121167!3d35.69074002933764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cda57c7875b%3A0xa32386cf2a385a5a!2z44K544OG44O844Kt44Oe44OD44Kv44K5IOaWsOWuv-S4reWkrumAmuOCiuW6lw!5e0!3m2!1sja!2sjp!4v1754032642550!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.44197135436!2d139.70085261121167!3d35.69074002933764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cda57c7875b%3A0xa32386cf2a385a5a!2z44K544OG44O844Kt44Oe44OD44Kv44K5IOaWsOWuv-S4reWkrumAmuOCiuW6lw!5e0!3m2!1sja!2sjp!4v1754032642550!5m2!1sja!2sjp" width="6-00" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                  <div class="store-item fade-in">
                     <div class="store-info">
-                        <h3>中野北口店</h3>
+                        <h3 data-lang-key="storeNakano">中野北口店</h3>
                         <p>
-                            <strong>住所:</strong> 東京都中野区中野5-61-6 富士ビル2F<br>
-                            <strong>電話:</strong> 03-5942-8329<br>
-                            <strong>営業時間:</strong> 11:30～22:30 (L.O 22:00)<br>
-                            <strong>定休日:</strong> なし
+                            <strong data-lang-key="addressLabel">住所:</strong> 東京都中野区中野5-61-6 富士ビル2F<br>
+                            <strong data-lang-key="phoneLabel">電話:</strong> 03-5942-8329<br>
+                            <strong data-lang-key="hoursLabel">営業時間:</strong> 11:30～22:30 (L.O 22:00)<br>
+                            <strong data-lang-key="closedLabel">定休日:</strong> なし
                         </p>
                     </div>
                     <div class="map-container">
@@ -516,12 +542,12 @@
                 </div>
                 <div class="store-item fade-in">
                     <div class="store-info">
-                        <h3>大宮東口駅前店</h3>
+                        <h3 data-lang-key="storeOmiya">大宮東口駅前店</h3>
                         <p>
-                            <strong>住所:</strong> 埼玉県さいたま市大宮区大門町1-92-9<br>
-                            <strong>電話:</strong> 048-788-3514<br>
-                            <strong>営業時間:</strong> 11:30～22:00 (L.O 21:30)<br>
-                            <strong>定休日:</strong> なし
+                            <strong data-lang-key="addressLabel">住所:</strong> 埼玉県さいたま市大宮区大門町1-92-9<br>
+                            <strong data-lang-key="phoneLabel">電話:</strong> 048-788-3514<br>
+                            <strong data-lang-key="hoursLabel">営業時間:</strong> 11:30～22:00 (L.O 21:30)<br>
+                            <strong data-lang-key="closedLabel">定休日:</strong> なし
                         </p>
                     </div>
                     <div class="map-container">
@@ -530,12 +556,12 @@
                 </div>
                 <div class="store-item fade-in">
                     <div class="store-info">
-                        <h3>ダイス川崎店</h3>
+                        <h3 data-lang-key="storeKawasaki">ダイス川崎店</h3>
                         <p>
-                            <strong>住所:</strong> 神奈川県川崎市川崎区駅前本町8 ダイスビル6F<br>
-                            <strong>電話:</strong> 044-223-3183<br>
-                            <strong>営業時間:</strong> 11:00～22:00 (L.O 21:20)<br>
-                            <strong>定休日:</strong> なし
+                            <strong data-lang-key="addressLabel">住所:</strong> 神奈川県川崎市川崎区駅前本町8 ダイスビル6F<br>
+                            <strong data-lang-key="phoneLabel">電話:</strong> 044-223-3183<br>
+                            <strong data-lang-key="hoursLabel">営業時間:</strong> 11:00～22:00 (L.O 21:20)<br>
+                            <strong data-lang-key="closedLabel">定休日:</strong> なし
                         </p>
                     </div>
                     <div class="map-container">
@@ -544,12 +570,12 @@
                 </div>
                 <div class="store-item fade-in">
                     <div class="store-info">
-                        <h3>イオン新百合ヶ丘店</h3>
+                        <h3 data-lang-key="storeShinYurigaoka">イオン新百合ヶ丘店</h3>
                         <p>
-                            <strong>住所:</strong> 神奈川県川崎市麻生区上麻生1-19 イオン新百合ヶ丘5F<br>
-                            <strong>電話:</strong> 044-959-6152<br>
-                            <strong>営業時間:</strong> 11:00～22:00 (L.O 21:00)<br>
-                            <strong>定休日:</strong> なし
+                            <strong data-lang-key="addressLabel">住所:</strong> 神奈川県川崎市麻生区上麻生1-19 イオン新百合ヶ丘5F<br>
+                            <strong data-lang-key="phoneLabel">電話:</strong> 044-959-6152<br>
+                            <strong data-lang-key="hoursLabel">営業時間:</strong> 11:00～22:00 (L.O 21:00)<br>
+                            <strong data-lang-key="closedLabel">定休日:</strong> なし
                         </p>
                     </div>
                     <div class="map-container">
@@ -574,6 +600,7 @@
     </footer>
 
     <script>
+        // ハンバーガーメニューのスクリプト
         const hamburger = document.querySelector('.hamburger-menu');
         const nav = document.querySelector('header nav');
         const navLinks = document.querySelectorAll('header nav a');
@@ -611,10 +638,105 @@
         fadeInElements.forEach(el => {
             observer.observe(el);
         });
-        
+
+        // 言語切り替えのスクリプト
+        const translations = {
+            en: {
+                navConcept: "Concept",
+                navMenu: "Menu",
+                navStores: "Stores",
+                heroTitle: "Eat Meat!",
+                heroSubtitle: "A challenge from a hearty steakhouse",
+                heroCta: "View Menu",
+                conceptTitle: "OUR CONCEPT",
+                conceptText: `"We just want you to eat meat to your heart's content!"<br>Steak Max started with that simple wish.<br><strong>Our specialty is serving sizzling hot steaks on an iron plate, heated right before your eyes with solid fuel.</strong><br>We satisfy your "meat cravings" with carefully selected cuts of meat, grilled to perfection.`,
+                menuTitle: "OUR MENU",
+                menuSteakTitle: "Gattsuri Steak",
+                menuSteakDesc: "Our signature dish. Overwhelming in volume and flavor.",
+                menuSirloinTitle: "Thick-Cut Sirloin Steak",
+                menuSirloinDesc: "A luxurious dish overflowing with juicy meat.",
+                menuHamburgTitle: "Tawara Hamburg Steak",
+                menuHamburgDesc: "A plump and juicy hamburg steak packed with the flavor of meat.",
+                menuCurryTitle: "Roasted Black Curry",
+                menuCurryDesc: "A special dish with an irresistible aroma of spices and a deep, rich flavor.",
+                menuComboTitle: "Combo",
+                menuComboDesc: "A greedy dish where you can enjoy both steak and hamburg steak.",
+                menuCheeseTitle: "Hawaiian Cheese Sauce",
+                menuCheeseDesc: "A thick and rich cheese sauce. Perfect with steak or hamburg steak!",
+                storesTitle: "STORE INFO",
+                storeEkoda: "Ekoda Store",
+                addressLabel: "Address:",
+                phoneLabel: "Phone:",
+                hoursLabel: "Hours:",
+                closedLabel: "Closed:",
+                lineOrder: "Click here for Delivery & Takeout",
+                storeShinjuku: "Shinjuku Chuo-dori Store",
+                storeNakano: "Nakano Kitaguchi Store",
+                storeOmiya: "Omiya Higashiguchi Ekimae Store",
+                storeKawasaki: "Dice Kawasaki Store",
+                storeShinYurigaoka: "AEON Shin-Yurigaoka Store",
+            },
+            ja: {
+                navConcept: "コンセプト",
+                navMenu: "メニュー",
+                navStores: "店舗情報",
+                heroTitle: "肉を喰らえ！",
+                heroSubtitle: "がっつり系ステーキ専門店の挑戦",
+                heroCta: "メニューを見る",
+                conceptTitle: "OUR CONCEPT",
+                conceptText: `「とにかく【肉】を思う存分喰らいついてほしい！」<br>そんなシンプルな願いから、Steak Maxは始まりました。<br><strong>固形燃料を使い、お客様の目の前でジュージューと音を立てる熱々の鉄板でご提供するのが最大のこだわり。</strong><br>厳選された塊肉を、最高の焼き加減で。あなたの「肉欲」を全力で満します。`,
+                menuTitle: "OUR MENU",
+                menuSteakTitle: "がっつりステーキ",
+                menuSteakDesc: "当店の看板メニュー。圧倒的なボリュームと旨さ。",
+                menuSirloinTitle: "厚切りサーロインステーキ",
+                menuSirloinDesc: "ジューシーな肉汁が溢れ出す、贅沢な一品。",
+                menuHamburgTitle: "俵型ハンバーグ",
+                menuHamburgDesc: "肉の旨味が凝縮された、ふっくらジューシーなハンバーグ。",
+                menuCurryTitle: "焙煎黒カレー",
+                menuCurryDesc: "スパイスの香りと深いコクがたまらない、こだわりの一皿。",
+                menuComboTitle: "コンボ",
+                menuComboDesc: "ステーキとハンバーグ、両方味わえる欲張りな一皿。",
+                menuCheeseTitle: "ハワイアンチーズソース",
+                menuCheeseDesc: "とろーり濃厚チーズソース。ステーキやハンバーグとの相性抜群！",
+                storesTitle: "STORE INFO",
+                storeEkoda: "江古田店",
+                addressLabel: "住所:",
+                phoneLabel: "電話:",
+                hoursLabel: "営業時間:",
+                closedLabel: "定休日:",
+                lineOrder: "デリバリー・テイクアウトのご注文はこちら",
+                storeShinjuku: "新宿中央通り店",
+                storeNakano: "中野北口店",
+                storeOmiya: "大宮東口駅前店",
+                storeKawasaki: "ダイス川崎店",
+                storeShinYurigaoka: "イオン新百合ヶ丘店",
+            }
+        };
+
+        const langToggleBtn = document.getElementById('lang-toggle-btn');
+        let currentLang = 'ja';
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            updateTexts();
+        });
+
+        function updateTexts() {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[currentLang][key]) {
+                    // innerHTMLを使うことで<br>や<strong>タグを解釈させる
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+            
+            // HTMLのlang属性も更新
+            document.documentElement.lang = currentLang;
+
+            // ボタンのテキストを更新
+            langToggleBtn.textContent = currentLang === 'ja' ? 'English' : '日本語';
+        }
     </script>
 
 </body>
 </html>
-
-
