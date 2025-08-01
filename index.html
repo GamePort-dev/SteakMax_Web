@@ -301,8 +301,22 @@
             filter: grayscale(1) invert(0.8);
         }
 
+        /* スクロールアニメーション */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* レスポンシブ対応 (スマホ表示) */
         @media(max-width: 768px) {
+            #showcase {
+                background-attachment: scroll; /* スマホではパララックス効果を無効化 */
+            }
             header nav {
                 position: fixed;
                 top: 0;
@@ -394,30 +408,30 @@
 
     <section id="concept">
         <div class="container">
-            <h2>OUR CONCEPT</h2>
-            <p>「とにかく【肉】を思う存分喰らいついてほしい！」<br>そんなシンプルな願いから、Steak Maxは始まりました。<br>厳選された塊肉を、最高の焼き加減で。あなたの「肉欲」を全力で満たします。</p>
+            <h2 class="fade-in">OUR CONCEPT</h2>
+            <p class="fade-in">「とにかく【肉】を思う存分喰らいついてほしい！」<br>そんなシンプルな願いから、Steak Maxは始まりました。<br>厳選された塊肉を、最高の焼き加減で。あなたの「肉欲」を全力で満します。</p>
         </div>
     </section>
 
     <section id="menu">
         <div class="container">
-            <h2>OUR MENU</h2>
+            <h2 class="fade-in">OUR MENU</h2>
             <div class="menu-grid">
-                <div class="menu-item">
+                <div class="menu-item fade-in">
                     <img src="steak.png" alt="がっつりステーキ">
                     <div class="menu-item-content">
                         <h3>がっつりステーキ</h3>
                         <p>当店の看板メニュー。圧倒的なボリュームと旨さ。</p>
                     </div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item fade-in">
                     <img src="sirloin.png" alt="厚切りサーロイン">
                     <div class="menu-item-content">
                         <h3>厚切りサーロインステーキ</h3>
                         <p>ジューシーな肉汁が溢れ出す、贅沢な一品。</p>
                     </div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item fade-in">
                     <img src="hamburg.png" alt="俵型ハンバーグ">
                     <div class="menu-item-content">
                         <h3>俵型ハンバーグ</h3>
@@ -430,9 +444,9 @@
 
     <section id="stores">
         <div class="container">
-            <h2>STORE INFO</h2>
+            <h2 class="fade-in">STORE INFO</h2>
             <div class="store-grid">
-                <div class="store-item">
+                <div class="store-item fade-in">
                     <div class="store-info">
                         <h3>江古田店</h3>
                         <p>
@@ -449,10 +463,10 @@
                         </div>
                     </div>
                     <div class="map-container">
-                        <iframe src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E7%B7%B4%E9%A6%AC%E5%8C%BA%E6%97%AD%E4%B8%981-67-5&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.574651815559!2d139.67098631121374!3d35.736678026811965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018ed9b2d96bd57%3A0x74e6358b14350b78!2z44K544OG44O844Kt44Oe44OD44Kv44K5IOOBjOOBo-OBpOOCiuezu-OCueODhuODvOOCrSDmsZ_lj6TnlLDlupc!5e0!3m2!1sja!2sjp!4v1754032610971!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
-                <div class="store-item">
+                <div class="store-item fade-in">
                     <div class="store-info">
                         <h3>新宿中央通り店</h3>
                         <p>
@@ -463,10 +477,10 @@
                         </p>
                     </div>
                     <div class="map-container">
-                        <iframe src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E6%96%B0%E5%AE%BF3-31-7&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.44197135436!2d139.70085261121167!3d35.69074002933764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cda57c7875b%3A0xa32386cf2a385a5a!2z44K544OG44O844Kt44Oe44OD44Kv44K5IOaWsOWuv-S4reWkrumAmuOCiuW6lw!5e0!3m2!1sja!2sjp!4v1754032642550!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
-                 <div class="store-item">
+                 <div class="store-item fade-in">
                     <div class="store-info">
                         <h3>中野北口店</h3>
                         <p>
@@ -477,10 +491,10 @@
                         </p>
                     </div>
                     <div class="map-container">
-                        <iframe src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%AD%E9%87%8E%E5%8C%BA%E4%B8%AD%E9%87%8E5-61-6&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.7881180584686!2d139.66322801121245!3d35.70683132845314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f30d4779005d%3A0xe5eb7c1d078965c3!2z44K544OG44O844Kt44Oe44OD44Kv44K55Lit6YeO5YyX5Y-j5bqX!5e0!3m2!1sja!2sjp!4v1754032510241!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
-                <div class="store-item">
+                <div class="store-item fade-in">
                     <div class="store-info">
                         <h3>大宮東口駅前店</h3>
                         <p>
@@ -491,10 +505,10 @@
                         </p>
                     </div>
                     <div class="map-container">
-                        <iframe src="https://maps.google.com/maps?q=%E5%9F%BC%E7%8E%89%E7%9C%8C%E3%81%95%E3%81%84%E3%81%9F%E3%81%BE%E5%B8%82%E5%A4%A7%E5%AE%AE%E5%8C%BA%E5%A4%A7%E9%96%80%E7%94%BA1-92-9&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3231.6255955076795!2d139.62250021122088!3d35.90718441741432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018c10009de2041%3A0x5ca903ea54a16ca8!2z44K544OG44O844Kt44Oe44OD44Kv44K55aSn5a6u5bqX!5e0!3m2!1sja!2sjp!4v1754032692286!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
-                <div class="store-item">
+                <div class="store-item fade-in">
                     <div class="store-info">
                         <h3>ダイス川崎店</h3>
                         <p>
@@ -505,10 +519,10 @@
                         </p>
                     </div>
                     <div class="map-container">
-                        <iframe src="https://maps.google.com/maps?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E5%B7%9D%E5%B4%8E%E5%B8%82%E5%B7%9D%E5%B4%8E%E5%8C%BA%E9%A7%85%E5%89%8D%E6%9C%AC%E7%94%BA8&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3246.912105325049!2d139.69526934856492!3d35.53116966787809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018613c989006bf%3A0xbd996fb8bd40896a!2z44K544OG44O844KtTUFY44OA44Kk44K55bed5bSO5bqX!5e0!3m2!1sja!2sjp!4v1754032743586!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
-                <div class="store-item">
+                <div class="store-item fade-in">
                     <div class="store-info">
                         <h3>イオン新百合ヶ丘店</h3>
                         <p>
@@ -519,7 +533,7 @@
                         </p>
                     </div>
                     <div class="map-container">
-                        <iframe src="https://maps.google.com/maps?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E5%B7%9D%E5%B4%8E%E5%B8%82%E9%BA%BB%E7%94%9F%E5%8C%BA%E4%B8%8A%E9%BA%BB%E7%94%9F1-19&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3244.0094028633475!2d139.50444351120808!3d35.60283463416257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018fb5a42967305%3A0x275a28d1006f94af!2z44K544OG44O844KtTUFY44Kk44Kq44Oz5paw55m-5ZCI44O25LiY5bqX!5e0!3m2!1sja!2sjp!4v1754032777370!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -554,6 +568,28 @@
                 hamburger.classList.remove('active');
                 nav.classList.remove('active');
             });
+        });
+
+        // スクロールアニメーションのスクリプト
+        const fadeInElements = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.1 // 要素が10%見えたらトリガー
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // 一度表示したら監視をやめる
+                }
+            });
+        }, observerOptions);
+
+        fadeInElements.forEach(el => {
+            observer.observe(el);
         });
     </script>
 
