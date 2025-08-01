@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steak Max - がっつり系ステーキ専門店</title>
+    <!-- ファビコンの設定 -->
+    <link rel="icon" href="stake_logo.png">
+    <!-- Google Fontsの読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* 基本的なスタイリング */
+        :root {
+            --brand-color: #e74c3c;
+            --dark-bg: #1a1a1a;
+            --light-bg: #2c2c2c;
+            --text-color: #f4f4f4;
+            --line-green: #00B900;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            max-width: 1200px;
+        }
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            color: var(--brand-color);
+        }
+
+        /* ヘッダー */
+        header {
+            background: var(--light-bg);
+            color: #fff;
+            padding: 0.5rem 0; /* ロゴに合わせてパディングを調整 */
+            border-bottom: var(--brand-color) 4px solid;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+        header a:hover {
+            color: var(--brand-color);
+        }
+        header #branding .header-logo {
+            height: 50px; /* ロゴの高さを設定 */
+            width: auto;
+        }
+        header nav ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+        header nav li {
+            display: inline;
+            padding: 0 20px;
+        }
+
+        /* ハンバーガーメニュー */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            z-index: 1001;
+        }
+        .hamburger-menu .line {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 6px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* ヒーローセクション */
+        #showcase {
+            position: relative;
+            min-height: 500px;
+            background-image: url('steak.png');
+            background-color: #000; /* 'contain'使用時の余白の色 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        #showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3); /* 画像を暗くするオーバーレイ */
+            z-index: 2;
+        }
+
+        #showcase .container {
+            position: relative;
+            z-index: 3;
+            text-shadow: 2px 2px 8px #000;
+        }
+        
+        #showcase h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        #showcase p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--brand-color);
+            color: #fff;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            color: #fff;
+        }
+
+        /* セクション共通スタイル */
+        section {
+            padding: 60px 20px;
+            border-bottom: 1px solid #333;
+        }
+        section:nth-child(even){
+            background-color: #222;
+        }
+        section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        /* コンセプト */
+        #concept p {
+            font-size: 18px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* メニュー */
+        #menu .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .menu-item {
+            background: var(--light-bg);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+        }
+        .menu-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .menu-item:hover img {
+            transform: scale(1.05);
+        }
+        .menu-item-content {
+            padding: 20px;
+        }
+        .menu-item h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* 店舗情報 */
+        #stores .store-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
+        .store-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        .store-info h3 {
+            color: var(--brand-color);
+            border-bottom: 2px solid var(--brand-color);
+            padding-bottom: 10px;
+            font-size: 24px;
+        }
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 75%;
+            border-radius: 8px;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* LINE注文ボタン */
+        .line-order {
+            margin-top: 15px;
+        }
+        .line-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--line-green);
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .line-button:hover {
+            background-color: #009d00;
+            color: #fff; /* ホバー時もテキスト色は白のまま */
+        }
+        .line-button img {
+            height: 24px;
+            margin-right: 10px;
+        }
+
+
+        /* フッター */
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 30px 0;
+        }
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 15px;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .social-links a:hover {
+            transform: scale(1.15);
+        }
+        .social-links img {
+            height: 28px;
+            width: 28px;
+            filter: grayscale(1) invert(0.8);
+        }
+
+        /* レスポンシブ対応 (スマホ表示) */
+        @media(max-width: 768px) {
+            header nav {
+                position: fixed;
+                top: 0;
+                right: -100%; /* 初期状態では画面外に */
+                width: 70%;
+                height: 100vh;
+                background-color: rgba(44, 44, 44, 0.98);
+                backdrop-filter: blur(5px);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.4s ease-in-out;
+            }
+            header nav.active {
+                right: 0; /* activeクラスが付いたら表示 */
+            }
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            header nav li {
+                display: block;
+                text-align: center;
+                margin: 20px 0;
+            }
+            header nav li a {
+                font-size: 20px;
+            }
+            .hamburger-menu {
+                display: block;
+            }
+            .hamburger-menu.active .line:nth-child(1) {
+                transform: rotate(-45deg) translate(-7px, 7px);
+            }
+            .hamburger-menu.active .line:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger-menu.active .line:nth-child(3) {
+                transform: rotate(45deg) translate(-7px, -7px);
+            }
+
+            .store-item {
+                grid-template-columns: 1fr;
+            }
+            .store-item .map-container {
+                order: -1; /* スマホでは地図を上に */
+            }
+            #showcase h1 {
+                font-size: 40px;
+            }
+            #showcase p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div id="branding">
+                
+    <a href="#"><img src="stake_logo.png" alt="Steak Max Logo" class="header-logo"></a>
+</div>
+           
+            <nav>
+                <ul>
+                    <li><a href="#concept">コンセプト</a></li>
+                    <li><a href="#menu">メニュー</a></li>
+                    <li><a href="#stores">店舗情報</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-menu">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>肉を喰らえ！</h1>
+            <p>がっつり系ステーキ専門店の挑戦</p>
+            <a href="#menu" class="cta-button">メニューを見る</a>
+        </div>
+    </section>
+
+    <section id="concept">
+        <div class="container">
+            <h2>OUR CONCEPT</h2>
+            <p>「とにかく【肉】を思う存分喰らいついてほしい！」<br>そんなシンプルな願いから、Steak Maxは始まりました。<br>厳選された塊肉を、最高の焼き加減で。あなたの「肉欲」を全力で満たします。</p>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <h2>OUR MENU</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="steak.png" alt="がっつりステーキ">
+                    <div class="menu-item-content">
+                        <h3>がっつりステーキ</h3>
+                        <p>当店の看板メニュー。圧倒的なボリュームと旨さ。</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="sirloin.png" alt="厚切りサーロイン">
+                    <div class="menu-item-content">
+                        <h3>厚切りサーロインステーキ</h3>
+                        <p>ジューシーな肉汁が溢れ出す、贅沢な一品。</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="hamburg.png" alt="俵型ハンバーグ">
+                    <div class="menu-item-content">
+                        <h3>俵型ハンバーグ</h3>
+                        <p>肉の旨味が凝縮された、ふっくらジューシーなハンバーグ。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stores">
+        <div class="container">
+            <h2>STORE INFO</h2>
+            <div class="store-grid">
+                <div class="store-item">
+                    <div class="store-info">
+                        <h3>江古田店</h3>
+                        <p>
+                            <strong>住所:</strong> 東京都練馬区旭丘1-67-5<br>
+                            <strong>電話:</strong> 03-5926-6929<br>
+                            <strong>営業時間:</strong> 11:30～22:30 (L.O 22:00)<br>
+                            <strong>定休日:</strong> なし
+                        </p>
+                        <div class="line-order">
+                            <a href="https://page.line.me/970ppkah?openQrModal=true" target="_blank" class="line-button">
+                                <img src="https://www.vectorlogo.zone/logos/line/line-icon.svg" alt="LINE Logo">
+                                <span>デリバリー・テイクアウトのご注文はこちら</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E7%B7%B4%E9%A6%AC%E5%8C%BA%E6%97%AD%E4%B8%981-67-5&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="store-item">
+                    <div class="store-info">
+                        <h3>新宿中央通り店</h3>
+                        <p>
+                            <strong>住所:</strong> 東京都新宿区新宿3-31-7 ミヤビル B1F<br>
+                            <strong>電話:</strong> 03-6380-0329<br>
+                            <strong>営業時間:</strong> 11:30～22:30 (L.O 22:00)<br>
+                            <strong>定休日:</strong> なし
+                        </p>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E6%96%B0%E5%AE%BF3-31-7&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                 <div class="store-item">
+                    <div class="store-info">
+                        <h3>中野北口店</h3>
+                        <p>
+                            <strong>住所:</strong> 東京都中野区中野5-61-6 富士ビル2F<br>
+                            <strong>電話:</strong> 03-5942-8329<br>
+                            <strong>営業時間:</strong> 11:30～22:30 (L.O 22:00)<br>
+                            <strong>定休日:</strong> なし
+                        </p>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%AD%E9%87%8E%E5%8C%BA%E4%B8%AD%E9%87%8E5-61-6&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="store-item">
+                    <div class="store-info">
+                        <h3>大宮東口駅前店</h3>
+                        <p>
+                            <strong>住所:</strong> 埼玉県さいたま市大宮区大門町1-92-9<br>
+                            <strong>電話:</strong> 048-788-3514<br>
+                            <strong>営業時間:</strong> 11:30～22:00 (L.O 21:30)<br>
+                            <strong>定休日:</strong> なし
+                        </p>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://maps.google.com/maps?q=%E5%9F%BC%E7%8E%89%E7%9C%8C%E3%81%95%E3%81%84%E3%81%9F%E3%81%BE%E5%B8%82%E5%A4%A7%E5%AE%AE%E5%8C%BA%E5%A4%A7%E9%96%80%E7%94%BA1-92-9&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="store-item">
+                    <div class="store-info">
+                        <h3>ダイス川崎店</h3>
+                        <p>
+                            <strong>住所:</strong> 神奈川県川崎市川崎区駅前本町8 ダイスビル6F<br>
+                            <strong>電話:</strong> 044-223-3183<br>
+                            <strong>営業時間:</strong> 11:00～22:00 (L.O 21:20)<br>
+                            <strong>定休日:</strong> なし
+                        </p>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://maps.google.com/maps?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E5%B7%9D%E5%B4%8E%E5%B8%82%E5%B7%9D%E5%B4%8E%E5%8C%BA%E9%A7%85%E5%89%8D%E6%9C%AC%E7%94%BA8&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="store-item">
+                    <div class="store-info">
+                        <h3>イオン新百合ヶ丘店</h3>
+                        <p>
+                            <strong>住所:</strong> 神奈川県川崎市麻生区上麻生1-19 イオン新百合ヶ丘5F<br>
+                            <strong>電話:</strong> 044-959-6152<br>
+                            <strong>営業時間:</strong> 11:00～22:00 (L.O 21:00)<br>
+                            <strong>定休日:</strong> なし
+                        </p>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://maps.google.com/maps?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E5%B7%9D%E5%B4%8E%E5%B8%82%E9%BA%BB%E7%94%9F%E5%8C%BA%E4%B8%8A%E9%BA%BB%E7%94%9F1-19&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            
+             <img src="stake_logo.png" alt="Steak Max Logo" class="footer-logo"> 
+            <div class="social-links">
+                <!-- ここに実際のSNSリンクを追加 -->
+                <a href="https://x.com/Steak_max" title="X"><img src="https://www.vectorlogo.zone/logos/x/x-icon.svg" alt="Xのロゴ"></a>
+                <a href="https://www.instagram.com/steak.max_official?utm_source=ig_web_button_share_sheet&igsh=bmRyeTliaTJqdXpy" title="Instagram"><img src="https://www.vectorlogo.zone/logos/instagram/instagram-icon.svg" alt="Instagramのロゴ"></a>
+            </div>
+            <p>&copy; 2025 Steak Max. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger-menu');
+        const nav = document.querySelector('header nav');
+        const navLinks = document.querySelectorAll('header nav a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
